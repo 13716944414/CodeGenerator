@@ -1,0 +1,12 @@
+package ${classpath}.service.impl;
+
+import ${classpath}.service.${tableName}Service;
+
+/**
+ * 
+ * @author jiangjiaxin
+ * @date 
+ */
+public class  ${tableName}ServiceImpl implements ${tableName}Service{
+	
+}

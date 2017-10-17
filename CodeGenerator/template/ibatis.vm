@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="${classpath}.dao.${tableName}DAO">
+
+	<resultMap id="BaseResultMap" type="${classpath}.model.${tableName}">
+	<#list columnInfoList as columnInfo>
+		<#if columnInfo.columnName == "id">
+			<id column="${columnInfo.columnName}" property="${columnInfo.attributeName}" jdbcType="${columnInfo.sqlColumnType}" />	
+		<#else>
+			<result column="${columnInfo.columnName}" property="${columnInfo.attributeName}" jdbcType="${columnInfo.sqlColumnType}" />
+		</#if>
+	</#list>
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+	<#list columnInfoList as columnInfo>
+		<#if columnInfo_has_next==true>
+			${columnInfo.columnName},
+		<#else>
+			${columnInfo.columnName}
+		</#if>
+	</#list>
+	</sql>
+	
+	<sql id = "${tableName}List" >
+		SELECT
+			<include refid="Base_Column_List" />
+		FROM  ${tableName}
+		<where>
+			<#list columnInfoList as columnInfo>
+				<if test="${columnInfo.attributeName} != null and ${columnInfo.attributeName} != ''"> AND ${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName}${r'}'}</if>
+			</#list>
+		</where>
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="String" resultMap="BaseResultMap">
+		SELECT
+			<include refid="Base_Column_List" />	
+		FROM ${tableName}
+		WHERE 
+			id = ${r'#{id,jdbcType=VARCHAR}'}
+	</select>
+	
+	<select id="selectByModel" parameterType="cn.com.kingtop.electronicclass.model.PEclassDevice" resultMap="BaseResultMap">
+		SELECT
+			<include refid="Base_Column_List" />	
+		FROM  ${tableName}
+		<where>
+			<#list columnInfoList as columnInfo>
+				<if test="${columnInfo.attributeName} != null and ${columnInfo.attributeName} != ''"> AND ${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName}${r'}'}</if>
+			</#list>
+		</where>	
+	</select>
+	
+	<select id="list" parameterType="${classpath}.model.${tableName}" resultType="${classpath}.model.${tableName}">
+		<include refid="${tableName}List"/>
+	</select>
+	
+	<select id="page" parameterType="${classpath}.model.${tableName}" resultType="${classpath}.model.${tableName}">
+		<include refid="${tableName}List"/>
+	</select>
+	
+	<select id="count" parameterType="${classpath}.model.${tableName}" resultType="int">
+		SELECT count(*) FROM ${tableName}
+		<where>
+			<#list columnInfoList as columnInfo>
+				<if test="${columnInfo.attributeName} != null and ${columnInfo.attributeName} != ''"> AND ${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName}${r'}'}</if>
+			</#list>
+		</where>
+	</select>
+	
+	<select id="max" parameterType="String" resultType="long">
+		SELECT max(id) FROM ${tableName}
+	</select>
+	
+	<insert id="insert" parameterType="${classpath}.model.${tableName}" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO ${tableName} (
+			<include refid="Base_Column_List" />
+		) VALUES (	
+			<#list columnInfoList as columnInfo>
+				${r'#{'}${columnInfo.attributeName},jdbcType=${columnInfo.sqlColumnType},jdbcType=${columnInfo.sqlColumnType}${r'}'}
+			</#list>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="${classpath}.model.${tableName}">
+		DELETE FROM ${tableName}
+		WHERE
+		id = ${r'#{'}id${r'}'}
+	</delete>
+	
+	<update id="update" parameterType="${classpath}.model.${tableName}">
+		UPDATE ${tableName}
+		<trim prefix="SET" suffixOverrides=",">
+			<#list columnInfoList as columnInfo>
+				<if test="${columnInfo.attributeName} != null">${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName},jdbcType=${columnInfo.sqlColumnType},jdbcType=${columnInfo.sqlColumnType}${r'}'},</if>
+			</#list>
+		</trim>
+		WHERE
+			id = ${r'#{'}id${r'}'}
+	</update>
+	
+	<update id="updateCondition" parameterType="Map">
+		UPDATE ${tableName}
+		<trim prefix="SET" suffixOverrides=",">
+			<#list columnInfoList as columnInfo>
+				<if test="id != null">${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName},jdbcType=${columnInfo.sqlColumnType}${r'}'},</if>
+			</#list>
+			
+		</trim>
+		<where>
+			<#list columnInfoList as columnInfo>
+				<if test="${columnInfo.attributeName} != null and ${columnInfo.attributeName} != ''">AND ${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName}${r'}'}</if>
+			</#list>
+		</where>
+	</update>
+</mapper>

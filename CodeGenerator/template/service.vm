@@ -1,0 +1,10 @@
+package ${classpath}.service;
+
+/**
+ * 
+ * @author jiangjiaxin
+ * @date 
+ */
+public interface  ${tableName}Service {
+	
+}

@@ -1,0 +1,10 @@
+package ${classpath}.dao;
+
+/**
+ * 
+ * @author jiangjiaxin
+ * @date 
+ */
+public interface  ${tableName}Dao {
+	
+}

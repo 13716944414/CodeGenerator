@@ -1,0 +1,1 @@
+生成jar包时generator.properties文件及template目录下所有文件不需
