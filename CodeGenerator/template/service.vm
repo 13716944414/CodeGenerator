@@ -1,10 +1,13 @@
 package ${classpath}.service;
 
+import ${classpath}.model.${tableName}Model;
+import cn.com.kingtop.utils.base.BaseService;
+
 /**
  * 
  * @author jiangjiaxin
  * @date 
  */
-public interface  ${tableName}Service {
+public interface  ${tableName}Service extends BaseService<String, ${tableName}Model>{
 	
 }

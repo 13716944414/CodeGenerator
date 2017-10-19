@@ -4,12 +4,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
 import java.sql.Time;
+import cn.com.kingtop.utils.base.BaseModel;
 /**
  * 
  * @author jiangjiaxin
  * @date 
  */
-public class ${tableName}Model {
+public class ${tableName}Model extends BaseModel{
 	
 <#list columnInfoList as columnInfo>
 	/**

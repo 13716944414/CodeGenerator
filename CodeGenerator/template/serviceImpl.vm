@@ -1,5 +1,9 @@
 package ${classpath}.service.impl;
 
+import java.util.List;
+
+import ${classpath}.dao.${tableName}Dao;
+import ${classpath}.model.${tableName}Model;
 import ${classpath}.service.${tableName}Service;
 
 /**
@@ -9,4 +13,45 @@ import ${classpath}.service.${tableName}Service;
  */
 public class  ${tableName}ServiceImpl implements ${tableName}Service{
 	
+	private ${tableName}Dao ${tableName}Dao;
+
+	public  ${tableName}Model selectByPrimaryKey(String id) {
+		return ${tableName}Dao.selectByPrimaryKey(id);
+	}
+
+	public ${tableName}Model selectByModel(${tableName}Model model) {
+		return ${tableName}Dao.selectByModel(model);
+	}
+
+	public List<${tableName}Model> list(${tableName}Model model) {
+		return ${tableName}Dao.list(model);
+	}
+
+	public List<${tableName}Model> page(${tableName}Model model) {
+		return ${tableName}Dao.page(model);
+	}
+
+	public int count(${tableName}Model model) {
+		return ${tableName}Dao.count(model);
+	}
+
+	public long max(String id) {
+		return ${tableName}Dao.max(id);
+	}
+
+	public void insert(${tableName}Model model) {
+		${tableName}Dao.insert(model);
+	}
+
+	public void delete(String id) {
+		${tableName}Dao.delete(id);
+	}
+
+	public void update(${tableName}Model model) {
+		${tableName}Dao.update(model);
+	}
+
+	public void updateCondition(${tableName}Model model, ${tableName}Model where) {
+		${tableName}Dao.updateCondition(model, where);
+	}
 }
