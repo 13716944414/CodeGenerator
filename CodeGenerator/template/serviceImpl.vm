@@ -13,45 +13,45 @@ import ${classpath}.service.${tableName}Service;
  */
 public class  ${tableName}ServiceImpl implements ${tableName}Service{
 	
-	private ${tableName}Dao ${tableName}Dao;
+	private ${tableName}Dao ${tableName?uncap_first}Dao;
 
 	public  ${tableName}Model selectByPrimaryKey(String id) {
-		return ${tableName}Dao.selectByPrimaryKey(id);
+		return ${tableName?uncap_first}Dao.selectByPrimaryKey(id);
 	}
 
 	public ${tableName}Model selectByModel(${tableName}Model model) {
-		return ${tableName}Dao.selectByModel(model);
+		return ${tableName?uncap_first}Dao.selectByModel(model);
 	}
 
 	public List<${tableName}Model> list(${tableName}Model model) {
-		return ${tableName}Dao.list(model);
+		return ${tableName?uncap_first}Dao.list(model);
 	}
 
 	public List<${tableName}Model> page(${tableName}Model model) {
-		return ${tableName}Dao.page(model);
+		return ${tableName?uncap_first}Dao.page(model);
 	}
 
 	public int count(${tableName}Model model) {
-		return ${tableName}Dao.count(model);
+		return ${tableName?uncap_first}Dao.count(model);
 	}
 
 	public long max(String id) {
-		return ${tableName}Dao.max(id);
+		return ${tableName?uncap_first}Dao.max(id);
 	}
 
 	public void insert(${tableName}Model model) {
-		${tableName}Dao.insert(model);
+		${tableName?uncap_first}Dao.insert(model);
 	}
 
 	public void delete(String id) {
-		${tableName}Dao.delete(id);
+		${tableName?uncap_first}Dao.delete(id);
 	}
 
 	public void update(${tableName}Model model) {
-		${tableName}Dao.update(model);
+		${tableName?uncap_first}Dao.update(model);
 	}
 
 	public void updateCondition(${tableName}Model model, ${tableName}Model where) {
-		${tableName}Dao.updateCondition(model, where);
+		${tableName?uncap_first}Dao.updateCondition(model, where);
 	}
 }
