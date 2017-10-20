@@ -38,6 +38,13 @@ public class Generator {
 			root.put("columnInfoList", temp_tableInfo.getColumnsInfoList());
 			root.put("classpath", configurationInfo.getClasspath());
 			mf.manufactureType(root, configurationInfo);
+			
+			System.out.println("表:" + temp_tableInfo.getTableName());
+			for(ColumnsInfo columnsInfo : temp_tableInfo.getColumnsInfoList()){
+				System.out.println(columnsInfo.getAttributeName() + "\t" + columnsInfo.getSqlColumnType() + "\t" + columnsInfo.getColumnSize() + "\t" + columnsInfo.getColumnRemarks());
+			}
+			System.out.println();
+			System.out.println();
 		}
 	}
 	
@@ -74,7 +81,6 @@ public class Generator {
 	}
 	
 	private static Properties getProperties() throws IOException {  
-        //InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("com/styspace/config.properties");
         String rootPath = System.getProperty("user.dir");
         InputStream inputStream = new FileInputStream(new File(rootPath + "\\generator.properties"));
         Properties properties = new Properties();  
@@ -85,7 +91,6 @@ public class Generator {
         }finally{  
             inputStream.close();  
         }  
-        System.out.println("name:"+properties.getProperty("jdbc.username")); 
         return properties;
     }
 	
