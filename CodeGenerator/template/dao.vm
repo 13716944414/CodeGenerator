@@ -1,12 +1,12 @@
-package ${classpath}.dao;
+package ${classPath}.dao;
 
-import cn.com.kingtop.utils.base.BaseDao;
-import ${classpath}.model. ${tableName}Model;
+import ${basePath}.base.BaseDao;
+import ${classPath}.model. ${tableName};
 /**
  * 
  * @author jiangjiaxin
  * @date 
  */
-public interface  ${tableName}Dao  extends BaseDao<String,  ${tableName}Model>{
+public interface  ${tableName}Dao  extends BaseDao<String,  ${tableName}>{
 	
 }

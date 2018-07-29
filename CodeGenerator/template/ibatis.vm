@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="${classpath}.dao.${tableName}DAO">
+<mapper namespace="${classPath}.dao.${tableName}Dao">
 
-	<resultMap id="BaseResultMap" type="${classpath}.model.${tableName}">
+	<resultMap id="BaseResultMap" type="${classPath}.model.${tableName}">
 	<#list columnInfoList as columnInfo>
 		<#if columnInfo.columnName == "id">
 			<id column="${columnInfo.columnName}" property="${columnInfo.attributeName}" jdbcType="${columnInfo.sqlColumnType}" />	
@@ -25,7 +25,7 @@
 	<sql id = "${tableName}List" >
 		SELECT
 			<include refid="Base_Column_List" />
-		FROM  ${tableName}
+		FROM  ${completeTableName}
 		<where>
 			<#list columnInfoList as columnInfo>
 				<if test="${columnInfo.attributeName} != null and ${columnInfo.attributeName} != ''"> AND ${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName}${r'}'}</if>
@@ -36,15 +36,15 @@
 	<select id="selectByPrimaryKey" parameterType="String" resultMap="BaseResultMap">
 		SELECT
 			<include refid="Base_Column_List" />	
-		FROM ${tableName}
+		FROM ${completeTableName}
 		WHERE 
 			id = ${r'#{id,jdbcType=VARCHAR}'}
 	</select>
 	
-	<select id="selectByModel" parameterType="cn.com.kingtop.electronicclass.model.PEclassDevice" resultMap="BaseResultMap">
+	<select id="selectByModel" parameterType="${classPath}.model.${tableName}" resultMap="BaseResultMap">
 		SELECT
 			<include refid="Base_Column_List" />	
-		FROM  ${tableName}
+		FROM  ${completeTableName}
 		<where>
 			<#list columnInfoList as columnInfo>
 				<if test="${columnInfo.attributeName} != null and ${columnInfo.attributeName} != ''"> AND ${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName}${r'}'}</if>
@@ -52,16 +52,16 @@
 		</where>	
 	</select>
 	
-	<select id="list" parameterType="${classpath}.model.${tableName}" resultType="${classpath}.model.${tableName}">
+	<select id="list" parameterType="${classPath}.model.${tableName}" resultType="${classPath}.model.${tableName}">
 		<include refid="${tableName}List"/>
 	</select>
 	
-	<select id="page" parameterType="${classpath}.model.${tableName}" resultType="${classpath}.model.${tableName}">
+	<select id="page" parameterType="${classPath}.model.${tableName}" resultType="${classPath}.model.${tableName}">
 		<include refid="${tableName}List"/>
 	</select>
 	
-	<select id="count" parameterType="${classpath}.model.${tableName}" resultType="int">
-		SELECT count(*) FROM ${tableName}
+	<select id="count" parameterType="${classPath}.model.${tableName}" resultType="int">
+		SELECT count(*) FROM ${completeTableName}
 		<where>
 			<#list columnInfoList as columnInfo>
 				<if test="${columnInfo.attributeName} != null and ${columnInfo.attributeName} != ''"> AND ${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName}${r'}'}</if>
@@ -70,11 +70,11 @@
 	</select>
 	
 	<select id="max" parameterType="String" resultType="long">
-		SELECT max(id) FROM ${tableName}
+		SELECT max(id) FROM ${completeTableName}
 	</select>
 	
-	<insert id="insert" parameterType="${classpath}.model.${tableName}" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO ${tableName} (
+	<insert id="insert" parameterType="${classPath}.model.${tableName}" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO ${completeTableName} (
 			<include refid="Base_Column_List" />
 		) VALUES (	
 			<#list columnInfoList as columnInfo>
@@ -83,14 +83,14 @@
 		)
 	</insert>
 	
-	<delete id="delete" parameterType="${classpath}.model.${tableName}">
-		DELETE FROM ${tableName}
+	<delete id="delete" parameterType="${classPath}.model.${tableName}">
+		DELETE FROM ${completeTableName}
 		WHERE
 		id = ${r'#{'}id${r'}'}
 	</delete>
 	
-	<update id="update" parameterType="${classpath}.model.${tableName}">
-		UPDATE ${tableName}
+	<update id="update" parameterType="${classPath}.model.${tableName}">
+		UPDATE ${completeTableName}
 		<trim prefix="SET" suffixOverrides=",">
 			<#list columnInfoList as columnInfo>
 				<if test="${columnInfo.attributeName} != null">${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName},jdbcType=${columnInfo.sqlColumnType},jdbcType=${columnInfo.sqlColumnType}${r'}'},</if>
@@ -101,7 +101,7 @@
 	</update>
 	
 	<update id="updateCondition" parameterType="Map">
-		UPDATE ${tableName}
+		UPDATE ${completeTableName}
 		<trim prefix="SET" suffixOverrides=",">
 			<#list columnInfoList as columnInfo>
 				<if test="id != null">${columnInfo.columnName} = ${r'#{'}${columnInfo.attributeName},jdbcType=${columnInfo.sqlColumnType}${r'}'},</if>

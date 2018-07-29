@@ -1,10 +1,10 @@
-package ${classpath}.service.impl;
+package ${classPath}.service.impl;
 
 import java.util.List;
 
-import ${classpath}.dao.${tableName}Dao;
-import ${classpath}.model.${tableName}Model;
-import ${classpath}.service.${tableName}Service;
+import ${classPath}.dao.${tableName}Dao;
+import ${classPath}.model.${tableName};
+import ${classPath}.service.${tableName}Service;
 
 /**
  * 
@@ -15,23 +15,23 @@ public class  ${tableName}ServiceImpl implements ${tableName}Service{
 	
 	private ${tableName}Dao ${tableName?uncap_first}Dao;
 
-	public  ${tableName}Model selectByPrimaryKey(String id) {
+	public  ${tableName} selectByPrimaryKey(String id) {
 		return ${tableName?uncap_first}Dao.selectByPrimaryKey(id);
 	}
 
-	public ${tableName}Model selectByModel(${tableName}Model model) {
+	public ${tableName} selectByModel(${tableName} model) {
 		return ${tableName?uncap_first}Dao.selectByModel(model);
 	}
 
-	public List<${tableName}Model> list(${tableName}Model model) {
+	public List<${tableName}> list(${tableName} model) {
 		return ${tableName?uncap_first}Dao.list(model);
 	}
 
-	public List<${tableName}Model> page(${tableName}Model model) {
+	public List<${tableName}> page(${tableName} model) {
 		return ${tableName?uncap_first}Dao.page(model);
 	}
 
-	public int count(${tableName}Model model) {
+	public int count(${tableName} model) {
 		return ${tableName?uncap_first}Dao.count(model);
 	}
 
@@ -39,7 +39,7 @@ public class  ${tableName}ServiceImpl implements ${tableName}Service{
 		return ${tableName?uncap_first}Dao.max(id);
 	}
 
-	public void insert(${tableName}Model model) {
+	public void insert(${tableName} model) {
 		${tableName?uncap_first}Dao.insert(model);
 	}
 
@@ -47,11 +47,11 @@ public class  ${tableName}ServiceImpl implements ${tableName}Service{
 		${tableName?uncap_first}Dao.delete(id);
 	}
 
-	public void update(${tableName}Model model) {
+	public void update(${tableName} model) {
 		${tableName?uncap_first}Dao.update(model);
 	}
 
-	public void updateCondition(${tableName}Model model, ${tableName}Model where) {
+	public void updateCondition(${tableName} model, ${tableName} where) {
 		${tableName?uncap_first}Dao.updateCondition(model, where);
 	}
 }

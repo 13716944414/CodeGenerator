@@ -31,11 +31,11 @@ public class ManufactureFile {
 	 * @date 2017-10-11 下午4:36:02
 	 */
 	public void manufactureType(Map<String, Object> root, ConfigurationInfo configurationInfo){
-		this.manufactureFile(root, configurationInfo.getClasspath(), configurationInfo.getOutPath(), "model.vm", "model", "java");
-		this.manufactureFile(root, configurationInfo.getClasspath(), configurationInfo.getOutPath(), "service.vm", "service", "java");
-		this.manufactureFile(root, configurationInfo.getClasspath(), configurationInfo.getOutPath(), "serviceImpl.vm", "service\\impl", "java");
-		this.manufactureFile(root, configurationInfo.getClasspath(), configurationInfo.getOutPath(), "dao.vm", "dao", "java");
-		this.manufactureFile(root, configurationInfo.getClasspath(), configurationInfo.getOutPath(), "ibatis.vm", "xml", "xml");
+		this.manufactureFile(root, configurationInfo.getClassPath(), configurationInfo.getOutPath(), "model.vm", "model", "java");
+		this.manufactureFile(root, configurationInfo.getClassPath(), configurationInfo.getOutPath(), "service.vm", "service", "java");
+		this.manufactureFile(root, configurationInfo.getClassPath(), configurationInfo.getOutPath(), "serviceImpl.vm", "service\\impl", "java");
+		this.manufactureFile(root, configurationInfo.getClassPath(), configurationInfo.getOutPath(), "dao.vm", "dao", "java");
+		this.manufactureFile(root, configurationInfo.getClassPath(), configurationInfo.getOutPath(), "ibatis.vm", "xml", "xml");
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class ManufactureFile {
 			}
 			String fileName = "";
 			if("model".equals(folder)){
-				fileName = root.get("tableName") + "Model" + "." + suffix;
+				fileName = root.get("tableName") + "." + suffix;
 			}else if("service".equals(folder)){
 				fileName = root.get("tableName") + "Service" + "." + suffix;
 			}else if("service\\impl".equals(folder)){

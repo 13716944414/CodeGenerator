@@ -35,8 +35,10 @@ public class Generator {
 			mf = new ManufactureFile();
 			root = new HashMap<String, Object>();
 			root.put("tableName", strFormat(temp_tableInfo.getTableName(), "0"));
+			root.put("completeTableName", temp_tableInfo.getTableName());
 			root.put("columnInfoList", temp_tableInfo.getColumnsInfoList());
-			root.put("classpath", configurationInfo.getClasspath());
+			root.put("classPath", configurationInfo.getClassPath());
+			root.put("basePath", configurationInfo.getBasePath());
 			mf.manufactureType(root, configurationInfo);
 			
 			System.out.println("表:" + temp_tableInfo.getTableName());
@@ -73,7 +75,8 @@ public class Generator {
 			configurationInfo.setUrl(properties.getProperty("jdbc.url"));
 			configurationInfo.setTableName(properties.getProperty("tableName"));
 			configurationInfo.setOutPath(properties.getProperty("outPath"));
-			configurationInfo.setClasspath(properties.getProperty("classpath"));
+			configurationInfo.setClassPath(properties.getProperty("classPath"));
+			configurationInfo.setBasePath(properties.getProperty("basePath"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

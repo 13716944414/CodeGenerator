@@ -2,31 +2,39 @@ package cn.com.kingtop;
 
 /**
  * 配置文件信息
+ * 
  * @author jiangjiaxin
  * @date 2017-10-11 下午2:42:09
  */
 public class ConfigurationInfo {
 
 	private String username;
-	
+
 	private String password;
-	
+
 	private String url;
-	
+
 	private String driverClass;
-	
+
 	private String tableName;
 	
+	private String completeTableName;
+
 	private String outPath;
-	
-	private String classpath;
+
+	private String classPath;
+
+	private String basePath;
 
 	/** @return the username */
 	public String getUsername() {
 		return username;
 	}
 
-	/**  @param username the username to set  */
+	/**
+	 * @param username
+	 *            the username to set
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -36,7 +44,10 @@ public class ConfigurationInfo {
 		return password;
 	}
 
-	/**  @param password the password to set  */
+	/**
+	 * @param password
+	 *            the password to set
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -46,7 +57,10 @@ public class ConfigurationInfo {
 		return url;
 	}
 
-	/**  @param url the url to set  */
+	/**
+	 * @param url
+	 *            the url to set
+	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
@@ -56,7 +70,10 @@ public class ConfigurationInfo {
 		return driverClass;
 	}
 
-	/**  @param driverClass the driverClass to set  */
+	/**
+	 * @param driverClass
+	 *            the driverClass to set
+	 */
 	public void setDriverClass(String driverClass) {
 		this.driverClass = driverClass;
 	}
@@ -66,7 +83,10 @@ public class ConfigurationInfo {
 		return tableName;
 	}
 
-	/**  @param tableName the tableName to set  */
+	/**
+	 * @param tableName
+	 *            the tableName to set
+	 */
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
 	}
@@ -76,19 +96,38 @@ public class ConfigurationInfo {
 		return outPath;
 	}
 
-	 /**  @param outPath the outPath to set  */ 
+	/**
+	 * @param outPath
+	 *            the outPath to set
+	 */
 	public void setOutPath(String outPath) {
 		this.outPath = outPath;
 	}
 
-	/** @return the classpath */
-	public String getClasspath() {
-		return classpath;
+	public String getClassPath() {
+		return classPath;
 	}
 
-	 /**  @param classpath the classpath to set  */ 
-	public void setClasspath(String classpath) {
-		this.classpath = classpath;
+	public void setClassPath(String classPath) {
+		this.classPath = classPath;
+	}
+
+	public String getBasePath() {
+		return basePath;
+	}
+
+	public void setBasePath(String basePath) {
+		this.basePath = basePath;
+	}
+
+	public String getCompleteTableName() {
+		return completeTableName;
+	}
+
+	public void setCompleteTableName(String completeTableName) {
+		this.completeTableName = completeTableName;
 	}
 	
+	
+
 }
